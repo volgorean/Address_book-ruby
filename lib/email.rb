@@ -10,7 +10,6 @@ class Email
   def Email.clear
     @@emails = []
   end
-
   def email_out
     @email
   end

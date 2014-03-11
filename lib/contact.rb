@@ -10,15 +10,6 @@ class Contact
     @name
   end
 
-  def save
-    @@contact_info << Address.all
-    Address.clear
-    @@contact_info << Phone.all
-    Phone.clear
-    @@contact_info << Email.all
-    Email.clear
-  end
-
   def Contact.clear
     @@contact_info = []
   end
@@ -26,6 +17,9 @@ class Contact
   def initialize(name)
     @name = name
     @@contact_info << name
+    @addresses = []
+    @phones = []
+    @emails = []
   end
 
   def rename(name)
@@ -35,26 +29,29 @@ class Contact
 
   def add_address(address)
     address = Address.new(address)
+    @addresses << address
   end
 
   def add_phone(phone)
     phone = Phone.new(phone)
+    @phones << phone
   end
 
   def add_email(email)
     email = Email.new(email)
+    @emails << email
   end
 
   def info_out
     puts "Name: " + @name
-    Address.all.each_with_index do |key, index|
-      puts "Address " +(index+1).to_s+ ": "+ key
+    @addresses.each_with_index do |key, index|
+      puts "Address " +(index+1).to_s+ ": "+ key.address_out
     end
-    Email.all.each_with_index do |key, index|
-      puts "Email " +(index+1).to_s+ ": "+ key
+    @emails.each_with_index do |key, index|
+      puts "Email " +(index+1).to_s+ ": "+ key.email_out
     end
-    Phone.all.each_with_index do |key, index|
-      puts "Phone " +(index+1).to_s+ ": "+ key
+    @phones.each_with_index do |key, index|
+      puts "Phone " +(index+1).to_s+ ": "+ key.phone_out
     end
   end
 

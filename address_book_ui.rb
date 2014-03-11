@@ -56,7 +56,6 @@ def modify_info(contact_num)
   puts "*********************************************"
 
   @contacts[contact_num].info_out
-
   puts "*********************************************"
   puts "* rename [contact name] = to rename contact *"
   puts "* addr [contact address] = to add address   *"

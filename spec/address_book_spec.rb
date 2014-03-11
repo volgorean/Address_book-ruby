@@ -28,4 +28,21 @@ describe Contact do
     Contact.all.should eq ["Dustin Brown", ["32344 1st street", "32344 1st street"], ["9443453"], ["dustin@epicodus.com"],
     "James Madison", ["1st madison ave"], ["3444353"], ["Mickyjs@hipster.com"]]
   end
+
+  it 'initializes with an empty array for addresses' do
+    new_contact = Contact.new("dbrown")
+    new_contact.addresses.should eq []
+  end
+
+  describe 'add_address' do
+    it 'adds the address to the addresses array' do
+      new_contact = Contact.new("D. Brown")
+      new_contact.add_address.should eq
+    end
+  end
 end
+
+# describe Address do
+
+# end
+
